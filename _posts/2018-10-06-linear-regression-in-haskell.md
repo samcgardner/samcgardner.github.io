@@ -29,5 +29,5 @@ However you choose to get there, you'll arrive at the following:
 
 Our function for estimating `y` at a given point is now given as $$ h_\theta $$
 
-The cost function we seek to minimise is $$ J(\theta) = \frac{1}{m} \sum_{i=1}^m (i) $$ J
+The cost function we seek to minimise is $$ J(\theta) = \frac{1}{m} \sum_{i=1}^m (i) $$ 
 

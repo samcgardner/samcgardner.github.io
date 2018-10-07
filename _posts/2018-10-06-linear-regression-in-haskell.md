@@ -31,7 +31,7 @@ Our function for estimating $$y$$ at a given point is now given as $$ h_\theta $
 
 The cost function we seek to minimise is
 
-$$ J(\theta) = \frac{1}{m} \sum_{i=1}^m (h_{\theta}(x^{(i)}) - y^{(i)})^2 $$ 
+$$ J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_{\theta}(x^{(i)}) - y^{(i)})^2 $$ 
 
 Or, in plain English, the average of the squared difference between our prediction and the actual value. Using the formula for gradient descent, we will end up with the following update formulae for $$ \theta_{0} $$ and $$ \theta_{1} $$:
 
@@ -85,8 +85,8 @@ newThetas :: Coefficients -> Float -> TrainingSet -> Coefficients
 newThetas thetas alpha dataset =
   let deltas = map (calculateDelta thetas) examples
       adjustedDeltas = adjustDeltas deltas examples
-      newt0 = t0 - 0.5 * alpha * avg deltas
-      newt1 = t1 - 0.5 * alpha * avg adjustedDeltas
+      newt0 = t0 - alpha * avg deltas
+      newt1 = t1 - alpha * avg adjustedDeltas
    in Coefficients (newt0, newt1)
   where
     Coefficients (t0, t1) = thetas
@@ -122,7 +122,7 @@ import Types
 main :: IO ()
 main = do
   let thetas = Coefficients (0, 0)
-  let alpha = 1
+  let alpha = 0.3 
   let trainingset =
         TrainingSet [Example (0, 50), Example (1, 60), Example (2, 70)]
   let iterations = 500
